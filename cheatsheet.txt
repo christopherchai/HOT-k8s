@@ -34,6 +34,7 @@ cd /HOT-k8s/
 
 == Lab 6
 k8s-{ProcessGroup:Kubernetes:pipeline.project}.{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName}
+
 {Service:DetectedName}.{ProcessGroup:KubernetesNamespace}
 
 == Lab 7
