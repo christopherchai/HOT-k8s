@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo wget -O Dynatrace-ActiveGate-Linux-x86-1.173.298.sh "https://jlp305.dynatrace-managed.com/e/pgo19-SG-k8s-$1/api/v1/deployment/installer/gateway/unix/latest?Api-Token=$2&arch=x86&flavor=default" 
-sudo /bin/sh Dynatrace-ActiveGate-Linux-x86-1.173.298.sh 
+sudo wget -O Dynatrace-ActiveGate-Linux-x86-1.189.138.sh "https://ark81438.live.dynatrace.com/api/v1/deployment/installer/gateway/unix/latest?arch=x86&flavor=default" --header="Authorization: Api-Token MJ2Z7pemShW66R-8IcbHJ" 
+sudo /bin/sh Dynatrace-ActiveGate-Linux-x86-1.189.138.sh 
 
 sleep 10s
 
