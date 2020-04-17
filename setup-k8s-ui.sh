@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl apply -f kubernetes-monitoring-service-account.yaml
+kubectl apply -f https://www.dynatrace.com/support/help/codefiles/kubernetes/kubernetes-monitoring-service-account.yaml
 
 printf "Your k8s API URL\n"
 kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}' && printf "\n"
