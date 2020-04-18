@@ -26,7 +26,7 @@ read -p "Is this all correct? (y/n) : " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-cat <<EOF > k8s-workshop/var.sh
+cat <<EOF > var.sh
 tenantID=$tenantID
 environmentID=$envID
 apitoken=$apitoken
@@ -44,7 +44,7 @@ kubectl apply -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releas
 kubectl -n dynatrace create secret generic oneagent --from-literal="apiToken=$apitoken" --from-literal="paasToken=$paastoken"
 
 if [[ -f "cr.yaml" ]]; then
-    rm -f /cr.yaml
+    rm -f cr.yaml
     echo "Removed cr.yaml"
 fi
 
