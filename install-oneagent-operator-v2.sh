@@ -39,34 +39,34 @@ kubectl create clusterrolebinding cluster-admin-binding \
   
 kubectl create namespace dynatrace
 
-kubectl create -f https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/v0.3.1/deploy/kubernetes.yaml
+kubectl apply -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/latest/download/kubernetes.yaml
 
 kubectl -n dynatrace create secret generic oneagent --from-literal="apiToken=$apitoken" --from-literal="paasToken=$paastoken"
 
-if [[ -f "HOT-k8s/cr.yaml" ]]; then
-    rm -f HOT-k8s/cr.yaml
+if [[ -f "cr.yaml" ]]; then
+    rm -f /cr.yaml
     echo "Removed cr.yaml"
 fi
 
 LATEST_RELEASE=v0.3.1
-curl -o HOT-k8s/cr.yaml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/$LATEST_RELEASE/deploy/cr.yaml
+curl -o cr.yaml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
 
 # read the yml template from a file and values with the strings 
 
 case $envID in
         '')
         echo "SaaS Deployment"
-        sed -i 's/apiUrl: https:\/\/ENVIRONMENTID.live.dynatrace.com\/api/apiUrl: https:\/\/'$tenantID'.live.dynatrace.com\/api/' k8s-workshop/cr.yaml
+        sed -i 's/apiUrl: https:\/\/ENVIRONMENTID.live.dynatrace.com\/api/apiUrl: https:\/\/'$tenantID'.live.dynatrace.com\/api/' cr.yaml
         ;;
         *)
         echo "Managed Deployment"
-        sed -i 's/apiUrl: https:\/\/ENVIRONMENTID.live.dynatrace.com\/api/apiUrl: https:\/\/'$tenantID'.dynatrace-managed.com\/e\/'$envID'\/api/' k8s-workshop/cr.yaml
+        sed -i 's/apiUrl: https:\/\/ENVIRONMENTID.live.dynatrace.com\/api/apiUrl: https:\/\/'$tenantID'.dynatrace-managed.com\/e\/'$envID'\/api/' cr.yaml
         ;;
         ?)
         usage
         ;;
 esac
 
-kubectl create -f HOT-k8s/cr.yaml
+kubectl create -f cr.yaml
 
 fi
