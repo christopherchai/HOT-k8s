@@ -16,7 +16,7 @@ Install OneAgent Operator
 
 ``` bash
 cd HOT-k8s 
-./install-oneagent-operator.sh
+./install-oneagent-operator-v2.sh
 ```
 
 1. Locate your AttendeeID from your Dynatrace environment. 
