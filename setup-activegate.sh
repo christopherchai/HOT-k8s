@@ -7,7 +7,12 @@ gcloud compute instances create dynatrace-activegate \
 --image-project ubuntu-os-cloud \
 --zone australia-southeast1-a \
 
-gcloud compute scp ~/HOT-k8s/install-activegate.sh \
-      dynatrace-activegate:~/ --zone australia-southeast1-a
+echo "Compute VM for ActiveGate created"
 
-gcloud compute ssh --zone australia-southeast1-a dynatrace-activegate --command "./install-activegate.sh $attendeeID $paastoken"
+sleep 20s
+
+gcloud compute scp ~/k8s-workshop/install-activegate.sh \
+      dynatrace-activegate:~/ --zone australia-southeast1-a
+echo "Copied file to Activegate"
+
+gcloud compute ssh --zone australia-southeast1-a dynatrace-activegate --command "./install-activegate.sh $tenantID $paastoken"
