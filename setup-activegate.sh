@@ -11,7 +11,7 @@ echo "Compute VM for ActiveGate created"
 
 sleep 20s
 
-gcloud compute scp ~/k8s-workshop/install-activegate.sh \
+gcloud compute scp ~/HOT-k8s/install-activegate.sh \
       dynatrace-activegate:~/ --zone australia-southeast1-a
 echo "Copied file to Activegate"
 
