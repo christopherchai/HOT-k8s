@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo wget -O Dynatrace-ActiveGate-Linux-x86-1.189.138.sh "https://ark81438.live.dynatrace.com/api/v1/deployment/installer/gateway/unix/latest?arch=x86&flavor=default" --header="Authorization: Api-Token MJ2Z7pemShW66R-8IcbHJ" 
+sudo wget -O Dynatrace-ActiveGate-Linux-x86-1.189.138.sh "https://$1.live.dynatrace.com/api/v1/deployment/installer/gateway/unix/latest?arch=x86&flavor=default" --header="Authorization: Api-Token $2" 
 sudo /bin/sh Dynatrace-ActiveGate-Linux-x86-1.189.138.sh 
 
 sleep 10s
