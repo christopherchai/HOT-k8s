@@ -43,14 +43,6 @@ kubectl apply -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releas
 
 kubectl -n dynatrace create secret generic oneagent --from-literal="apiToken=$apitoken" --from-literal="paasToken=$paastoken"
 
-if [[ -f "cr.yaml" ]]; then
-    rm -f cr.yaml
-    echo "Removed cr.yaml"
-fi
-
-LATEST_RELEASE=v0.3.1
-curl -o cr.yaml https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
-
 # read the yml template from a file and values with the strings 
 
 case $envID in
