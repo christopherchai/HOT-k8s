@@ -20,7 +20,7 @@ cd HOT-k8s
 ```
 
 1. Locate your Tenant ID from your Dynatrace environment. 
-It can be found in this format https://<b><TenantID></b>.live.dynatrace.com
+It can be found in this format https://<b>TenantID</b>.live.dynatrace.com
 2. Enter your Tenant ID to the screen prompt.
 3. Get an API token for the Dynatrace API with the scope Access problem and event feed, metrics, and topology. 
 You can find it from <b>Settings</b> -> <b>Integration</b> -> <b>Dynatrace API</b> 
