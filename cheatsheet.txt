@@ -47,5 +47,5 @@ kubectl get deployments -n production -l tier=frontend
 kubectl -n dynatrace logs -p [pod name]
 kubectl -n dynatrace delete secret oneagent
 kubectl delete -n dynatrace oneagent --all
-kubectl delete -f https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/kubernetes.yaml
-kubectl delete -n production --all
+kubectl delete -f https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/latest/download/kubernetes.yaml
+kubectl delete pod -n production --all
