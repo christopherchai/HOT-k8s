@@ -59,6 +59,6 @@ case $envID in
         ;;
 esac
 
-kubectl create -f cr.yaml
+kubectl apply -f cr.yaml
 
 fi
