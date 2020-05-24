@@ -1,4 +1,4 @@
-# Hands On Training for PerformGo! APAC K8S 
+# Hands On Training for PerformGo! APAC k8s 
 
 This repository contains labs for the PerformGo! Hands-On Kubernetes Session. We will be using Google Kubernetes Engine (GKE) for this hands-on but this will work on other platforms as well. 
 
