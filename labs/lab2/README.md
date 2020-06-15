@@ -30,9 +30,9 @@ You can find it from <b>Settings</b> -> <b>Integration</b> -> <b>Dynatrace API</
 
 That's it! Dynatrace is now monitoring your GKE Environment!
 
-Steps have been automated from our [official documentation page](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/)
+```install-oneagent-operator-v2.sh``` basically automated the steps from our [official documentation page](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/)
 
-<b>Note:</b> If you already have an Environment ActiveGate and you would like to leverage on that, please use the the steps listed in the link above. Your apiUrl should be ``` https://<ACTIVE_GATE_IP OR HOSTNAME>:9999/e/<TenantID>/api``` for both SaaS and Managed.
+<b>Note:</b> If you already have an Environment ActiveGate and you would like to leverage on that, please use the the steps listed in the link above instead of the automated steps. Your apiUrl should be ``` https://<ACTIVE_GATE_IP OR HOSTNAME>:9999/e/<TenantID>/api``` for both SaaS and Managed.
 
 ![GKE-CLI-Indentation](https://github.com/Nodnarboen/HOT-k8s/blob/master/assets/Picture7.png)
 
