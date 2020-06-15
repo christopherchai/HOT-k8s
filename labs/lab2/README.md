@@ -32,6 +32,8 @@ That's it! Dynatrace is now monitoring your GKE Environment!
 
 Steps have been automated from our [official documentation page](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/)
 
+<b>Note:</b> If you already have an Environment ActiveGate and you would like to leverage on that, please use the the steps listed in the link above. Your apiUrl should be ``` bash https://<ACTIVE_GATE_IP OR HOSTNAME>:9999/e/<TenantID>/api``` for both SaaS and Managed.
+
 ![GKE-CLI-Indentation](https://github.com/Nodnarboen/HOT-k8s/blob/master/assets/Picture7.png)
 
 ### Pointers / Troubleshooting Tips:
