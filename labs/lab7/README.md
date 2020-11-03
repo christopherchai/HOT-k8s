@@ -66,6 +66,6 @@ Choose <b>Response Time - Server</b> and select <b>Service Instance</b> as Dimen
 
 ![JSON](https://github.com/Nodnarboen/HOT-k8s/blob/master/assets/Picture27.png)
 
-:arrow_up: [Back to TOC](/README.md) :arrow_left: [Prev](../la6/README.md) 
+:arrow_up: [Back to TOC](/README.md) :arrow_left: [Prev](../lab6/README.md) 
 
 
