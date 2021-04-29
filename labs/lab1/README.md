@@ -6,7 +6,7 @@ Head over to https://cloud.google.com/free/ and sign up for a free GCP account w
 
 You can also signup for a new Google Account if you don't have one
 
-Upon signup, you will have free credits tied to your GCP account. (12 months + 400AUD)
+Upon signup, you will have free credits tied to your GCP account. (3 months + 300USD)
 
 You can login to your GCP console [here](https://console.cloud.google.com/home/).
 
