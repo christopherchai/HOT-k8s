@@ -2,36 +2,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shipping
+  name: user
   namespace: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: shipping
+      app: user
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
         pipeline.stage: dev
-        pipeline.build: 1.1.0.7904
+        pipeline.build: 1.5.0.0073
         pipeline.project: sockshop
-        support.contact: "john.doe@sockshop.com"
+        support.contact: "tony.stark@sockshop.com"
         support.channel: "#support-sockshop-services"
       labels:
-        app: shipping
+        app: user
         stage: dev
         release: stable
-        version: "1.1"
+        version: "1.5"
         tier: "business"
         product: "sockshop"
     spec:
       containers:
-      - name: shipping
-        image: dynatracesockshop/shipping:0.5.0
-        env:
-        - name: JAVA_OPTS
-          value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
+      - name: user
+        image: dynatracesockshop/user:0.5.0
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -41,16 +38,17 @@ spec:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 240
+          initialDelaySeconds: 120
           periodSeconds: 10
-          timeoutSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 1
         readinessProbe:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 240
           periodSeconds: 10
-          timeoutSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 1
       volumes:
         - name: tmp-volume
           emptyDir:
@@ -61,9 +59,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: shipping
+  name: user
   labels:
-    app: shipping
+    app: user
   namespace: dev
 spec:
   ports:
@@ -71,4 +69,4 @@ spec:
     port: 80
     targetPort: 8080
   selector:
-    app: shipping
+    app: user
