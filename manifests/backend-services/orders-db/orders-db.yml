@@ -19,6 +19,9 @@ metadata:
   namespace: dev
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: orders-db
   strategy:
     type: Recreate
   template:
@@ -74,6 +77,7 @@ spec:
     targetPort: 27017
   selector:
     name: orders-db
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -95,6 +99,9 @@ metadata:
   namespace: production
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: orders-db
   strategy:
     type: Recreate
   template:
