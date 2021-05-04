@@ -6,11 +6,14 @@ metadata:
   namespace: production
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: carts
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
-        dynatrace/instrument: "false"
+        dynatrace/instrument: "true"
         pipeline.stage: prod-stable
         pipeline.build: 2.3.1.3476
         pipeline.project: sockshop
@@ -26,7 +29,7 @@ spec:
     spec:
       containers:
       - name: carts
-        image: dynatracesockshop/carts:0.5.0
+        image: wmsegar/carts:1.0
         env:
         - name: JAVA_OPTS
           value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
