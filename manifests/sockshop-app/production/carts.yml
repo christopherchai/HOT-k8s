@@ -2,37 +2,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: carts
+  name: catalogue
   namespace: production
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: carts
+      app: catalogue
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
         dynatrace/instrument: "true"
         pipeline.stage: prod-stable
-        pipeline.build: 2.3.1.3476
+        pipeline.build: 3.1.0.0593
         pipeline.project: sockshop
         support.contact: "john.doe@sockshop.com"
         support.channel: "#support-sockshop-services"
       labels:
-        app: carts
+        app: catalogue
         stage: prod
         release: stable
-        version: "2.3"
+        version: "3.1"
         tier: "business"
         product: "sockshop"
     spec:
       containers:
-      - name: carts
-        image: wmsegar/carts:1.0
-        env:
-        - name: JAVA_OPTS
-          value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
+      - name: catalogue
+        image: dynatracesockshop/catalogue:0.5.0
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -40,18 +37,19 @@ spec:
           name: tmp-volume
         livenessProbe:
           httpGet:
-            path: /carts/1/items/health
+            path: /health
             port: 8080
-          initialDelaySeconds: 240
+          initialDelaySeconds: 120
           periodSeconds: 10
-          timeoutSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 1
         readinessProbe:
           httpGet:
-            path: /carts/1/items/health
+            path: /health
             port: 8080
-          initialDelaySeconds: 240
           periodSeconds: 10
-          timeoutSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 1
       volumes:
         - name: tmp-volume
           emptyDir:
@@ -62,9 +60,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: carts
+  name: catalogue
   labels:
-    app: carts
+    app: catalogue
   namespace: production
 spec:
   ports:
@@ -72,5 +70,4 @@ spec:
     port: 80
     targetPort: 8080
   selector:
-    app: carts
-  type: LoadBalancer
+    app: catalogue
