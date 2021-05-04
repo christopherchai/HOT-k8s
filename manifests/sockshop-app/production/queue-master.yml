@@ -6,11 +6,14 @@ metadata:
   namespace: production
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: queue-master
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
-        dynatrace/instrument: "false"
+        dynatrace/instrument: "true"
         pipeline.stage: prod-stable
         pipeline.build: 1.0.0.0323
         pipeline.project: sockshop
